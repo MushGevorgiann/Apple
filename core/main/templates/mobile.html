@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Մոբայլ Կատալոգ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      font-family: 'Ubuntu', sans-serif;
+      background: linear-gradient(135deg, #fefcea, #f1daff);
+      color: #333;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      max-width: 260px;
+      width: 100%;
+      text-align: center;
+      padding: 20px;
+      border: 1px solid #eee;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .card p {
+      margin: 8px 0;
+      font-size: 16px;
+    }
+
+    .card .price {
+      font-size: 18px;
+      font-weight: bold;
+      color: #ff4b2b;
+    }
+
+  </style>
+</head>
+<body>
+
+  {% for i in mobile_filter %}
+    {% for j in i.cat_Mobile.all %}
+      <div class="card">
+        <img src="{{ j.img.url }}" alt="{{ j.name }}">
+        <p>{{ j.name }}</p>
+        <p class="price">{{ j.price }} $</p>
+      </div>
+    {% endfor %}
+  {% endfor %}
+
+</body>
+</html>
